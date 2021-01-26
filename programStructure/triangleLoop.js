@@ -9,3 +9,9 @@ function triangle(size) {
 }
 
 triangle(7);
+
+
+/** official answer below */
+//  for (let line = "#"; line.length < 8; line += "#") {
+//      console.log(line);
+//  }
