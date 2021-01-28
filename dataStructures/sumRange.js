@@ -6,14 +6,20 @@
  */
 
 function range(start, end, step = 1) {
-  let nums = [start];
-  for (let i = 1; start+(step*i) <= end; i++) {
-      nums.push(start + step * i)
+  let nums = [];
+  if (step < 0) {
+    for (let i = start; i >= end; i+=step) {
+      nums.push(i);
+    }
+  } else {
+    for (let i = start; i <= end; i+=step) {
+      nums.push(i);
+    }
   }
   return nums;
 }
 
-console.log(range(5, 2, -1));
+console.log(range(40, 10, -5));
 
 function sum([...numbers]) {
   let total = 0;
