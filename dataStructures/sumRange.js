@@ -13,7 +13,7 @@ function range(start, end) {
     return nums
 }
 
-// console.log(range(1,100))
+console.log(range(1, 100))
 
 function sum([...numbers]) {
     let total = 0;
