@@ -8,21 +8,21 @@
 
 function reverseArray(arr) {
   let newArr = [];
-  for (let i = array.length - 1; i >= 0; i--) {
-      newArr.push(arr[i])
+  for (let i = arr.length - 1; i >= 0; i--) {
+    newArr.push(arr[i]);
   }
   return newArr;
 }
 
-console.log('reverseArray: ', reverseArray([11, 22, 33, 44, 55, 66]));
+console.log("reverseArray: ", reverseArray([11, 22, 33, 44, 55, 66]));
 
 function reverseArrayInPlace(arr) {
-  let newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArr[arr.length - (1 + i)] = arr[i];
+  for (let i = 0; i < Math.floor(arr.length / 2); i++) {
+    let oldValue = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = oldValue;
   }
-  arr = newArr;
   return arr;
 }
 
-console.log('reverseArrayInPlace: ', reverseArrayInPlace([1, 2, 3, 4, 5, 6]));
+console.log("reverseArrayInPlace: ", reverseArrayInPlace([1, 2, 3, 4, 5, 6]));
