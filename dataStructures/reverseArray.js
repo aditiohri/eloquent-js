@@ -7,8 +7,10 @@
  */
 
 function reverseArray(arr) {
-  const newArr = [];
-  arr.map((item, idx) => (newArr[arr.length - (1 + idx)] = item));
+  let newArr = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+      newArr.push(arr[i])
+  }
   return newArr;
 }
 
