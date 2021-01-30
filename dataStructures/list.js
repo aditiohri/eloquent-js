@@ -6,16 +6,24 @@
  * write a recursive version of nth as well.
  */
 
-// let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null }}}
-
-// console.log(list[1])
-
 function arrayToList(arr) {
   let list = null;
   for (let i = arr.length - 1; i >= 0; i--) {
-      list = { value: arr[i], rest: list }
+    list = { value: arr[i], rest: list };
   }
   return list;
 }
 
-console.log(arrayToList([1, 2, 3]));
+// console.log(arrayToList([1, 2, 3]));
+
+function listToArray(list) {
+  let arr = [];
+  for (let object = list; object; object = object.rest) {
+    arr.push(object.value)
+  }
+  return arr;
+}
+
+let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+console.log(listToArray(list));
+// https://eloquentjavascript.net/code/#4.3
