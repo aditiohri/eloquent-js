@@ -31,10 +31,7 @@ function prepend(value, list) {
 }
 // console.log(prepend(10, prepend(20, null)))
 
-// nth, a function that takes a list and a number and retuns the element at the given position in the list or undefined when there is no such element
-
 function nth(n, list) {
-  if (!list) return undefined;
   if (n === 0) return list.value;
   if (n > 0) {
     while (n > 0) {
@@ -46,4 +43,12 @@ function nth(n, list) {
   }
 }
 
-console.log(nth(0, list));
+// console.log(nth(1, list));
+
+function nthRecursive(n, list) {
+  if (!list) return undefined;
+  if (n === 0) return list.value;
+  if (n > 0) return nthRecursive(n - 1, list.rest);
+}
+
+// console.log(nthRecursive(1, list));
