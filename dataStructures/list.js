@@ -19,19 +19,31 @@ function arrayToList(arr) {
 function listToArray(list) {
   let arr = [];
   for (let object = list; object; object = object.rest) {
-    arr.push(object.value)
+    arr.push(object.value);
   }
   return arr;
 }
 let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
 // console.log(listToArray(list));
 
-
 function prepend(value, list) {
-  let newList = [list].concat()
-  newList.unshift(value)
-  return newList// this will only work for arrays
-  // return {value, rest: list}
+  return { value, rest: list };
 }
 // console.log(prepend(10, prepend(20, null)))
-console.log(prepend(10, list))
+
+// nth, a function that takes a list and a number and retuns the element at the given position in the list or undefined when there is no such element
+
+function nth(n, list) {
+  if (!list) return undefined;
+  if (n === 0) return list.value;
+  if (n > 0) {
+    while (n > 0) {
+      list = list.rest;
+      if (!list) return undefined;
+      n--;
+    }
+    return list.value;
+  }
+}
+
+console.log(nth(0, list));
