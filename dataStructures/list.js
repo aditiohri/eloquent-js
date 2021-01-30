@@ -4,6 +4,7 @@
  * then add a helper function prepend, which takes an element and a list and creates a new list that adds the element to the front of the input list,
  * and nth, a function that takes a list and a number and retuns the element at the given position in the list or undefined when there is no such element.
  * write a recursive version of nth as well.
+ * https://eloquentjavascript.net/code/#4.3
  */
 
 function arrayToList(arr) {
@@ -13,7 +14,6 @@ function arrayToList(arr) {
   }
   return list;
 }
-
 // console.log(arrayToList([1, 2, 3]));
 
 function listToArray(list) {
@@ -23,12 +23,12 @@ function listToArray(list) {
   }
   return arr;
 }
+// let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+// console.log(listToArray(list));
 
-let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
-console.log(listToArray(list));
 
-
-function prepend (element, list) {
-  return list.concat().unshift(element)
+function prepend(value, list) {
+  // return list.concat().unshift(value) // this will only work for arrays
+  return {value, rest: list}
 }
-// https://eloquentjavascript.net/code/#4.3
+console.log(prepend(10, prepend(20, null)))
