@@ -23,12 +23,15 @@ function listToArray(list) {
   }
   return arr;
 }
-// let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
+let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
 // console.log(listToArray(list));
 
 
 function prepend(value, list) {
-  // return list.concat().unshift(value) // this will only work for arrays
-  return {value, rest: list}
+  let newList = [list].concat()
+  newList.unshift(value)
+  return newList// this will only work for arrays
+  // return {value, rest: list}
 }
-console.log(prepend(10, prepend(20, null)))
+// console.log(prepend(10, prepend(20, null)))
+console.log(prepend(10, list))
