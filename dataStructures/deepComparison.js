@@ -17,8 +17,8 @@ function deepEqual(value1, value2) {
       let value2Keys = Object.keys(value2);
       for (let val1 of value1Keys) {
         for (let val2 of value2Keys) {
-          console.log(value1[val1], value2[val2]);
-          return deepEqual(value1[val1], value2[val2]);
+          if (val1 === val2) return deepEqual(value1[val1], value2[val2]);
+          return false;
         }
       }
     } else if (value1 === value2) {
