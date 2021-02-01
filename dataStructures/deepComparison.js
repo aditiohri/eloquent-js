@@ -4,34 +4,29 @@
  *
  */
 
-function deepEqual(value1, value2) {
-  if (value1 === null || value2 === null) {
-    if (value1 === null && value2 === null) return true;
-    return false;
+function deepEqual(one, two) {
+  if (one === two) return true;
+
+  if (isNull(one) || isNull(two)) return false;
+
+  let oneKeys = Object.keys(one),
+    twoKeys = Object.keys(two);
+
+  if (oneKeys.length !== twoKeys.length) return false;
+
+  for (let key of oneKeys) {
+      if (!twoKeys.includes(key) || !deepEqual(one[key], two[key])) return false;
   }
-  let type1 = typeof value1;
-  let type2 = typeof value2;
-  console.log(type1, type2);
-  if (type1 === type2) {
-    if (type1 === "object") {
-      let value1Keys = Object.keys(value1);
-      let value2Keys = Object.keys(value2);
-      console.log("let's look through the object keys");
-      value1Keys.forEach((val, idx) => {
-        console.log(val, idx, value2Keys[idx] === val);
-        return deepEqual(val, value2Keys[idx])
-          ? deepEqual(value1[val], value2[val])
-          : false;
-      });
-    }
-    if (value1 === value2) {
-      console.log("they are the smae");
-      return true;
-    } else {
-      console.log("i tried everything");
-      return false;
-    }
-  }
+
+  return true
 }
 
 console.log(deepEqual({ cool: true, pool: true }, { cool: true, pool: true }));
+
+function isNull(x) {
+  if (x === null || typeof x !== "object") return true;
+  return false;
+}
+
+// console.log(isNull(null));
+// console.log(isNull({}));
