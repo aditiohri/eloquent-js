@@ -11,24 +11,28 @@ function deepEqual(value1, value2) {
   }
   let type1 = typeof value1;
   let type2 = typeof value2;
+  console.log(type1, type2);
   if (type1 === type2) {
     if (type1 === "object") {
       let value1Keys = Object.keys(value1);
       let value2Keys = Object.keys(value2);
-      for (let val1 of value1Keys) {
-        for (let val2 of value2Keys) {
-          if (val1 === val2) return deepEqual(value1[val1], value2[val2]);
-          return false;
-        }
-      }
-    } else if (value1 === value2) {
+      console.log("let's look through the object keys");
+      value1Keys.forEach((val, idx) => {
+        console.log(val, idx, value2Keys[idx] === val);
+        return deepEqual(val, value2Keys[idx])
+          ? deepEqual(value1[val], value2[val])
+          : false;
+      });
+    }
+    if (value1 === value2) {
+      console.log("they are the smae");
       return true;
+    } else {
+      return false;
     }
   }
-  return false;
+  //   console.log("i tried everything");
+  //   return false;
 }
 
-console.log(
-  deepEqual({ cool: false, pool: true }, { cool: true, rule: "cool" })
-);
-console.log(typeof []);
+console.log(deepEqual({ cool: true, pool: true }, { cool: true, pool: true }));
