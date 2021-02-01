@@ -28,11 +28,10 @@ function deepEqual(value1, value2) {
       console.log("they are the smae");
       return true;
     } else {
+      console.log("i tried everything");
       return false;
     }
   }
-  //   console.log("i tried everything");
-  //   return false;
 }
 
 console.log(deepEqual({ cool: true, pool: true }, { cool: true, pool: true }));
